@@ -644,6 +644,14 @@ MultiProfileTest.testEnvironmentService - PASSED
 Avec cette configuration, vous pouvez valider que les beans spécifiques à chaque profil fonctionnent comme attendu dans des environnements différents (dev, prod, etc.).
 
 <img width="644" alt="image" src="https://github.com/user-attachments/assets/c95219bb-6f1a-4443-a107-74fb55aed84b">
+<img width="1132" alt="image" src="https://github.com/user-attachments/assets/415a206f-571d-469d-a704-131f03f3e75b">
+<img width="774" alt="image" src="https://github.com/user-attachments/assets/4d1c839b-60db-4289-91b1-e9dc80accd22">
+<img width="1136" alt="image" src="https://github.com/user-attachments/assets/af00881e-10e8-4ace-8218-690bec22a0a7">
+<img width="1113" alt="image" src="https://github.com/user-attachments/assets/b180c4bb-ad6e-4234-950e-b94e68b76dcc">
+<img width="699" alt="image" src="https://github.com/user-attachments/assets/0e720e22-f15e-4f2f-b19c-c88955e5d1be">
+
+
+
 
 
 
