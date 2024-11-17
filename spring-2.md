@@ -314,6 +314,8 @@ public class NewDashboardService {
     }
 }
 ```
+<img width="1149" alt="image" src="https://github.com/user-attachments/assets/8f3597a0-b363-4240-8419-536b9f7097ce">
+
 ###  6. Différences principales
 Concept	Description
 Stereotypes	Annotations préconfigurées par Spring pour identifier des composants spécifiques dans l'application.
