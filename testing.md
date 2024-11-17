@@ -276,6 +276,78 @@ Simplifie les tests Spring : Élimine le besoin d'ajouter manuellement @ExtendWi
 7. Résultat attendu
 Lors de l'exécution des tests ci-dessus, Spring chargera uniquement les configurations nécessaires, ce qui accélère le processus de test tout en garantissant que les beans fonctionnent comme prévu
 
+#    Différences entre @SpringJUnitConfig et @SpringBootTest en Spring :
+1. @SpringJUnitConfig
+Description :
+
+Combine deux annotations principales : @ExtendWith(SpringExtension.class) (pour JUnit 5) et @ContextConfiguration.
+Utile pour charger un contexte Spring spécifique pour un test d'intégration ou unitaire sans inclure l'ensemble des configurations d'une application Spring Boot.
+Cas d'usage :
+
+Lorsque vous voulez tester un composant isolé avec une configuration Spring personnalisée.
+Exemple : charger des beans spécifiques ou un fichier XML de configuration.
+Exemple :
+
+```java
+@SpringJUnitConfig(classes = {MyTestConfig.class})
+class MyServiceTest {
+    @Autowired
+    private MyService myService;
+
+    @Test
+    void testMyService() {
+        assertNotNull(myService);
+    }
+}
+```
+Caractéristiques principales :
+Moins gourmand en ressources, car il ne démarre pas toute l'application.
+Utilisé principalement pour tester des composants ou des modules isolés.
+2. @SpringBootTest
+Description :
+
+Utilisé pour des tests d'intégration à l'échelle de l'application entière.
+Charge tout le contexte de l'application Spring Boot, y compris le serveur, les configurations, et les beans nécessaires.
+Cas d'usage :
+
+Lorsque vous voulez tester une application entière (exemple : endpoints REST, accès à la base de données).
+Il est conçu pour des tests d'intégration end-to-end.
+Exemple :
+
+```java
+@SpringBootTest
+class MyApplicationTests {
+    @Autowired
+    private MyController myController;
+
+    @Test
+    void contextLoads() {
+        assertNotNull(myController);
+    }
+}
+```
+Caractéristiques principales :
+
+Inclut des fonctionnalités spécifiques à Spring Boot comme les propriétés dans application.properties, les configurations automatiques, etc.
+Peut démarrer un serveur intégré si webEnvironment est configuré.
+Options disponibles :
+
+```java
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK) // (par défaut) Serveur Web simulé.
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT) // Démarre un serveur avec un port aléatoire.
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT) // Démarre un serveur avec le port défini.
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE) // Ne démarre pas de serveur.
+```
+Différences principales :
+Aspect	@SpringJUnitConfig	@SpringBootTest
+Portée	Contexte minimal, défini manuellement.	Charge tout le contexte Spring Boot.
+Performance	Plus léger, adapté aux tests unitaires.	Plus lourd, adapté aux tests d'intégration.
+Serveur Web	Ne démarre pas de serveur intégré.	Peut démarrer un serveur intégré.
+Configuration	Nécessite une configuration explicite.	Utilise la configuration Spring Boot complète.
+Recommandation :
+
+Utilisez @SpringJUnitConfig pour des tests unitaires ou ciblés.
+Utilisez @SpringBootTest pour des tests d'intégration
 ### test inegration
 
 Exemple de test d'intégration avec Spring Boot
