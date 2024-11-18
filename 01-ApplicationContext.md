@@ -3,7 +3,7 @@
 En Spring, le ApplicationContext est l'interface principale du conteneur IoC (Inversion of Control) qui gère le cycle de vie des beans et la configuration des services au sein de l'application. L'ApplicationContext est responsable de la création, l'initialisation, et l'injection des beans, en fonction de la configuration fournie (annotations, XML, etc.).
 
 Rôles de l'ApplicationContext :
-<li>Gestion des beans : Le ApplicationContext crée et gère l'ensemble des objets (beans) définis dans votre application Spring.</li>
+<li>Gestion des beans : L'applicationContext crée et gère l'ensemble des objets (beans) définis dans votre application Spring.</li>
 <li>Injection de dépendances : Il permet l'injection automatique des dépendances (par exemple via les annotations @Autowired).</li>
 <li>Gestion des événements : Il peut publier des événements et permettre l'écoute de ces événements dans l'application.</li>
 <li>Internationalisation : Il offre des mécanismes pour gérer la localisation et l'internationalisation (i18n).</li>
@@ -11,7 +11,7 @@ Rôles de l'ApplicationContext :
 Types d'ApplicationContext
 Spring propose plusieurs implémentations de ApplicationContext en fonction du type d'application que vous souhaitez développer.
 
-ClassPathXmlApplicationContext : Utilisé pour charger un contexte à partir de fichiers de configuration XML.
+<li>ClassPathXmlApplicationContext : Utilisé pour charger un contexte à partir de fichiers de configuration XML.</li>
 
 ```java
 ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
@@ -40,9 +40,9 @@ public class AppConfig {
         return new MyServiceImpl();
     }
 }
+```
 Classe principale pour initialiser l'ApplicationContext
-java
-Copier le code
+```java
 public class App {
     public static void main(String[] args) {
         // Initialiser le contexte Spring avec une classe de configuration
