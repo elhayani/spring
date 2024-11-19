@@ -849,3 +849,85 @@ Collections	?[...], ^[...], $[...]	Filtrage, premier ou dernier élément
 SpEL est puissant mais doit être utilisé avec modération pour éviter des configurations trop complexes ou difficiles à maintenir.
 Sécurité : Si les expressions sont dynamiques et entrées par l'utilisateur, elles doivent être validées pour éviter des injections malveillantes.
 
+Voici une comparaison entre ApplicationContext et ConfigurableApplicationContext dans le cadre de Spring 6.1. Ces deux interfaces jouent des rôles importants dans la gestion du contexte d'application Spring.
+
+1. ApplicationContext
+Définition :
+
+C'est l'interface principale utilisée pour interagir avec le conteneur IoC de Spring.
+Elle fournit les fonctionnalités de base pour obtenir des beans et accéder aux fonctionnalités du conteneur.
+Fonctionnalités clés :
+
+Gestion des beans : récupération des beans avec leur nom ou type.
+java
+Copier le code
+ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+MyBean myBean = context.getBean(MyBean.class);
+Gestion des événements d'application via l'API de publication d'événements Spring.
+Intégration des fichiers de ressources (comme les fichiers .properties).
+Limitations :
+
+Elle est en lecture seule après sa configuration initiale : vous ne pouvez pas modifier directement le contexte ou enregistrer des beans dynamiquement une fois le contexte chargé.
+Pas conçue pour une gestion avancée comme l'arrêt manuel ou la configuration dynamique.
+2. ConfigurableApplicationContext
+Définition :
+
+C'est une sous-interface de ApplicationContext qui offre des fonctionnalités supplémentaires pour configurer et gérer dynamiquement le contexte d'application.
+Fonctionnalités avancées :
+
+Initialisation et fermeture manuelles :
+Permet de rafraîchir (refresh()) ou de fermer (close()) le contexte d'application.
+java
+Copier le code
+ConfigurableApplicationContext context = 
+    new AnnotationConfigApplicationContext(AppConfig.class);
+context.refresh();
+context.close();
+Ajout dynamique de beans et de configurations :
+Vous pouvez enregistrer de nouveaux beans ou définir des environnements avant l'initialisation.
+java
+Copier le code
+ConfigurableApplicationContext context = 
+    new AnnotationConfigApplicationContext();
+context.register(AppConfig.class);
+context.refresh();
+Accès à l'Environment et personnalisation :
+Par exemple, vous pouvez ajouter ou modifier des propriétés système ou des sources de configuration avant de démarrer le contexte.
+Gestion des cycles de vie :
+Implémente l'interface Lifecycle pour gérer des phases de démarrage et d'arrêt.
+Comparaison :
+Aspect	ApplicationContext	ConfigurableApplicationContext
+Mutable après chargement	Non	Oui
+Méthodes de gestion du cycle de vie	Non (pas de refresh() ni close())	Oui (refresh(), close() disponibles)
+Ajout dynamique de beans	Non	Oui
+Usage principal	Récupération et utilisation des beans	Configuration avancée et gestion dynamique
+Hiérarchie	Interface principale	Sous-interface
+Quand utiliser ConfigurableApplicationContext ?
+Si vous avez besoin de recharger ou modifier la configuration du contexte après son initialisation.
+Lorsque vous développez une application nécessitant un contrôle explicite du cycle de vie du contexte, comme dans les tests d'intégration.
+Pour des cas avancés, comme l'ajout ou la suppression de beans dynamiquement.
+Exemple pratique :
+Utilisation de ConfigurableApplicationContext avec gestion manuelle :
+java
+Copier le code
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+public class Main {
+    public static void main(String[] args) {
+        ConfigurableApplicationContext context = 
+            new AnnotationConfigApplicationContext(AppConfig.class);
+        
+        MyBean myBean = context.getBean(MyBean.class);
+        System.out.println(myBean.sayHello());
+
+        // Fermeture explicite du contexte
+        context.close();
+    }
+}
+Dans cet exemple, le contexte est contrôlé explicitement, ce qui est utile pour une gestion précise des ressources.
+
+Conclusion :
+Utilisez ApplicationContext pour des besoins standards et simples où le contexte est en lecture seule après le chargement.
+Préférez ConfigurableApplicationContext pour des scénarios plus avancés nécessitant une gestion dynamique ou un contrôle explicite du cycle de vie.
+
