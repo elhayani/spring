@@ -13,7 +13,7 @@
 <hr><img width="1152" alt="image" src="https://github.com/user-attachments/assets/d14eb5db-fef5-4824-975e-0025a00a270b">
 <hr><img width="745" alt="image" src="https://github.com/user-attachments/assets/f632b59f-271b-43e5-8773-371fa934ec65">
 
-###  #PostConstruct @PreDestroy
+###  @PostConstruct @PreDestroy
 <hr><img width="1097" alt="image" src="https://github.com/user-attachments/assets/5ac68825-c655-42b6-bf40-24578de997d2">
 Les annotations @PostConstruct et @PreDestroy sont utilisées en Java pour définir des méthodes de cycle de vie dans un bean Spring. Elles permettent d'exécuter des tâches spécifiques avant ou après l'utilisation d'un bean.
 
