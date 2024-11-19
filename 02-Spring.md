@@ -1,20 +1,20 @@
 # Componenet scanning
 
-<img width="805" alt="image" src="https://github.com/user-attachments/assets/d80d5d8a-1f24-4bf9-a7b1-f059f1a9ede5">
-<img width="1013" alt="image" src="https://github.com/user-attachments/assets/0f30db49-76f2-46a3-b66d-10c25420f58a">
-<img width="1122" alt="image" src="https://github.com/user-attachments/assets/8beaffa8-ffc0-49cc-bca4-d8949ef014a3">
-<img width="705" alt="image" src="https://github.com/user-attachments/assets/6db47f56-6419-4597-92d4-e0cc66607aff">
-<img width="1104" alt="image" src="https://github.com/user-attachments/assets/10bbd7c2-4384-4093-8b22-5477d9cd7108">
-<img width="1096" alt="image" src="https://github.com/user-attachments/assets/f3e5f385-3db5-475c-b1f7-6ed64f24e483">
-<img width="1154" alt="image" src="https://github.com/user-attachments/assets/6b7ab667-e9d7-4668-a210-97f81d945d46">
+<hr><img width="805" alt="image" src="https://github.com/user-attachments/assets/d80d5d8a-1f24-4bf9-a7b1-f059f1a9ede5">
+<hr><img width="1013" alt="image" src="https://github.com/user-attachments/assets/0f30db49-76f2-46a3-b66d-10c25420f58a">
+<hr><img width="1122" alt="image" src="https://github.com/user-attachments/assets/8beaffa8-ffc0-49cc-bca4-d8949ef014a3">
+<hr><img width="705" alt="image" src="https://github.com/user-attachments/assets/6db47f56-6419-4597-92d4-e0cc66607aff">
+<hr><img width="1104" alt="image" src="https://github.com/user-attachments/assets/10bbd7c2-4384-4093-8b22-5477d9cd7108">
+<hr><img width="1096" alt="image" src="https://github.com/user-attachments/assets/f3e5f385-3db5-475c-b1f7-6ed64f24e483">
+<hr><img width="1154" alt="image" src="https://github.com/user-attachments/assets/6b7ab667-e9d7-4668-a210-97f81d945d46">
 
 ###  Best practices
-<img width="791" alt="image" src="https://github.com/user-attachments/assets/f2bd7f42-0aa3-4aaf-a55c-8d693258cfec">
-<img width="1152" alt="image" src="https://github.com/user-attachments/assets/d14eb5db-fef5-4824-975e-0025a00a270b">
-<img width="745" alt="image" src="https://github.com/user-attachments/assets/f632b59f-271b-43e5-8773-371fa934ec65">
+<hr><img width="791" alt="image" src="https://github.com/user-attachments/assets/f2bd7f42-0aa3-4aaf-a55c-8d693258cfec">
+<hr><img width="1152" alt="image" src="https://github.com/user-attachments/assets/d14eb5db-fef5-4824-975e-0025a00a270b">
+<hr><img width="745" alt="image" src="https://github.com/user-attachments/assets/f632b59f-271b-43e5-8773-371fa934ec65">
 
 ###  #PostConstruct @PreDestroy
-<img width="1097" alt="image" src="https://github.com/user-attachments/assets/5ac68825-c655-42b6-bf40-24578de997d2">
+<hr><img width="1097" alt="image" src="https://github.com/user-attachments/assets/5ac68825-c655-42b6-bf40-24578de997d2">
 Les annotations @PostConstruct et @PreDestroy sont utilisées en Java pour définir des méthodes de cycle de vie dans un bean Spring. Elles permettent d'exécuter des tâches spécifiques avant ou après l'utilisation d'un bean.
 
 1. @PostConstruct
@@ -141,10 +141,10 @@ Chargement de données initiales.
 Fermeture de connexions ou de sockets.
 Sauvegarde de données avant arrêt.
 
-<img width="1121" alt="image" src="https://github.com/user-attachments/assets/ecd36844-ff95-433f-9242-a0c04b2c4de4">
-<img width="1133" alt="image" src="https://github.com/user-attachments/assets/4265f409-5925-4316-a4b1-d2b5dab33fa8">
-<img width="1099" alt="image" src="https://github.com/user-attachments/assets/159e006d-e424-4302-bcd9-e7e93b762719">
-<img width="1132" alt="image" src="https://github.com/user-attachments/assets/23b2486c-1b10-4c9d-b4c4-b171563bcb5e">
+<hr><img width="1121" alt="image" src="https://github.com/user-attachments/assets/ecd36844-ff95-433f-9242-a0c04b2c4de4">
+<hr><img width="1133" alt="image" src="https://github.com/user-attachments/assets/4265f409-5925-4316-a4b1-d2b5dab33fa8">
+<hr><img width="1099" alt="image" src="https://github.com/user-attachments/assets/159e006d-e424-4302-bcd9-e7e93b762719">
+<hr><img width="1132" alt="image" src="https://github.com/user-attachments/assets/23b2486c-1b10-4c9d-b4c4-b171563bcb5e">
 
 
 
@@ -314,7 +314,7 @@ public class NewDashboardService {
     }
 }
 ```
-<img width="1149" alt="image" src="https://github.com/user-attachments/assets/8f3597a0-b363-4240-8419-536b9f7097ce">
+<hr><img width="1149" alt="image" src="https://github.com/user-attachments/assets/8f3597a0-b363-4240-8419-536b9f7097ce">
 
 ###  6. Différences principales
 Concept	Description
