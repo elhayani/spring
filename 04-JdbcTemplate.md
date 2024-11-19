@@ -186,6 +186,16 @@ public class ProductService {
     }
 }
 ```
+
+Si votre classe Java a les mêmes noms de champs que les colonnes SQL, vous pouvez utiliser BeanPropertyRowMapper pour mapper automatiquement les résultats :
+
+```java
+List<User> users = jdbcTemplate.query("SELECT * FROM users", 
+        new BeanPropertyRowMapper<>(User.class));
+```
+Cela fonctionne bien si les noms des colonnes SQL correspondent exactement aux noms des champs de l'objet Java.
+
+
 Explication du code
 BatchPreparedStatementSetter : Cette interface permet de définir les valeurs des paramètres pour chaque requête préparée dans le lot. La méthode setValues est appelée pour chaque élément de la liste, afin de définir les valeurs des paramètres (name, description, price) pour chaque produit.
 getBatchSize : Cette méthode retourne le nombre total de requêtes SQL qui seront exécutées dans le lot (ici, la taille de la liste products).
