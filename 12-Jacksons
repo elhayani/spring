@@ -1,4 +1,5 @@
-Jackson JAR (Java Library)
+#    Jackson JAR (Java Library)
+
 The Jackson library is a popular, high-performance JSON processing library for Java. It allows developers to serialize (convert Java objects to JSON) and deserialize (convert JSON to Java objects) efficiently. It is widely used in Spring Boot and other Java applications for handling JSON data.
 
 Key Features of Jackson
@@ -29,17 +30,17 @@ Dependencies
 To use Jackson in your project, include the following dependencies in your build file.
 
 Maven:
-xml
-Copier le code
+```xml
 <dependency>
     <groupId>com.fasterxml.jackson.core</groupId>
     <artifactId>jackson-databind</artifactId>
     <version>2.15.2</version> <!-- Replace with the latest version -->
 </dependency>
+```
 Gradle:
-gradle
-Copier le code
+```gradle
 implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+```
 Modules of Jackson
 Core Modules:
 
@@ -53,8 +54,7 @@ jackson-datatype-jsr310: Support for Java 8 Date and Time API.
 jackson-module-kotlin: Integration with Kotlin.
 Basic Example
 Serialization (Java Object to JSON):
-java
-Copier le code
+```java
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JacksonExample {
@@ -86,9 +86,9 @@ class Person {
     public int getAge() { return age; }
     public void setAge(int age) { this.age = age; }
 }
+```
 Deserialization (JSON to Java Object):
-java
-Copier le code
+```java
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JacksonExample {
@@ -103,6 +103,7 @@ public class JacksonExample {
         System.out.println(person.getName() + " is " + person.getAge() + " years old.");
     }
 }
+```
 Common Annotations
 Annotation	Description
 @JsonProperty	Maps a JSON property to a specific Java field.
@@ -116,15 +117,7 @@ Jackson throws exceptions for invalid JSON or mapping issues:
 
 JsonMappingException: Issues with mapping JSON to Java.
 JsonParseException: Issues with parsing invalid JSON.
-Let me know if you need help with advanced use cases, such as custom serializers or integration with Spring Boot! 😊
 
-
-2/2
-
-Vous avez dit :
-exemple, avec Common Annotations
-ChatGPT a dit :
-ChatGPT
 Voici un exemple pratique utilisant les annotations courantes de Jackson dans une classe Java. Nous allons illustrer comment personnaliser la sérialisation et la désérialisation en utilisant les annotations suivantes :
 
 @JsonProperty
@@ -134,8 +127,7 @@ Voici un exemple pratique utilisant les annotations courantes de Jackson dans un
 @JsonCreator et @JsonValue
 Code Complet avec les Annotations
 Classe Java avec Annotations
-java
-Copier le code
+```java
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.LocalDate;
@@ -252,6 +244,7 @@ class Person {
                 ", lastName='" + lastName + '\'' + ", birthDate=" + birthDate + '}';
     }
 }
+```
 Explications des Annotations
 Annotation	Description
 @JsonProperty	Définit un nom personnalisé pour un champ dans le JSON (exemple : person_id pour le champ id).
@@ -262,15 +255,15 @@ Annotation	Description
 @JsonValue	Indique une méthode à utiliser pour produire une représentation JSON personnalisée (exemple : nom complet).
 Sortie
 JSON Sérialisé
-json
-Copier le code
+```json
 {
   "person_id": 1,
   "first_name": "Alice",
   "last_name": "Smith",
   "birth_date": "1990-05-20"
 }
+```
 Objet Désérialisé
-plaintext
-Copier le code
+```plaintext
 Objet désérialisé : Person{id=2, firstName='Bob', lastName='Brown', birthDate=1985-10-15}
+```
