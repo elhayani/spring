@@ -1,25 +1,30 @@
+#  @EnableXXXXX
 Voici un tableau détaillé qui présente les annotations @EnableXXXXX, leur utilité, et les annotations qui peuvent les inclure.
 
 Annotation	Description	Inclus(e) dans
-@EnableAutoConfiguration	Active la configuration automatique basée sur les dépendances dans le classpath.	@SpringBootApplication
+```
+@EnableAutoConfiguration	Active la configuration automatique basée sur les dépendances dans le classpath
 @EnableWebSecurity	Active la configuration de sécurité pour les applications web.	-
 @EnableScheduling	Active la prise en charge des tâches planifiées (scheduled tasks).	-
 @EnableAsync	Active l'exécution asynchrone des méthodes annotées avec @Async.	-
 @EnableTransactionManagement	Active la gestion des transactions dans l'application.	-
 @EnableJpaRepositories	Active la prise en charge des repositories JPA.	-
-@EnableDiscoveryClient	Permet d'enregistrer l'application comme client dans un service de découverte (Eureka, Consul, etc.)	-
+@EnableDiscoveryClient	Enregistrer comme client dans un service de découverte (Eureka, Consul, etc.)	-
 @EnableFeignClients	Active la prise en charge des clients Feign pour appeler des services REST.	-
 @EnableConfigurationProperties	Active la liaison de propriétés externes à des classes avec @ConfigurationProperties.	-
 @EnableAspectJAutoProxy	Active la gestion des aspects (AOP) basés sur AspectJ.	-
 @SpringBootApplication	Annotation combinée qui inclut :	@EnableAutoConfiguration, @ComponentScan, @Configuration
+```
 Notes :
 L'annotation @SpringBootApplication est une méta-annotation qui inclut plusieurs autres annotations et simplifie les configurations pour une application Spring Boot.
 Certaines annotations comme @EnableWebSecurity, @EnableScheduling, etc., doivent être déclarées explicitement selon le besoin de l'application.
-Si vous souhaitez explorer une annotation en détail ou ajouter des exemples de configuration, n’hésitez pas ! 😊
 
 Voici une liste des méta-annotations les plus courantes dans Spring 6.1, avec leur utilité et une brève explication :
 
+#  Méta-Annotation
+
 Méta-Annotation	Description	Utilisée dans
+```
 @Component	Indique qu'une classe est un composant Spring (un bean géré).	@Service, @Repository, @Controller
 @Service	Spécialisation de @Component pour les classes de logique métier.	-
 @Repository	Spécialisation de @Component pour les classes d'accès aux données.	-
@@ -43,9 +48,10 @@ Méta-Annotation	Description	Utilisée dans
 @Profile	Active un bean ou une configuration uniquement pour un profil donné.	Utilisé avec des annotations comme @Component ou @Configuration
 @EnableConfigurationProperties	Active la gestion des classes de type @ConfigurationProperties.	-
 @Validated	Active la validation pour les classes ou méthodes annotées.	Utilisé avec des classes de configuration
+```
 Méta-Annotations combinées
 Certaines méta-annotations combinent plusieurs autres annotations pour simplifier la configuration :
-
+```
 @SpringBootApplication
 
 Inclut :
@@ -61,3 +67,4 @@ Inclut :
 
 Inclut :
 @RequestMapping(method = RequestMethod.GET)
+```
