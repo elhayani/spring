@@ -1,3 +1,132 @@
+At some point, you will need to protect your application and learn how to distinguish one user from another to personalize your content. This topic will introduce you to the basic authentication mechanisms that underpin Spring Security. You will also see which of those mechanisms are enabled by default and how they work.
+Before discussing the components, we need to understand where Spring Security is in the architecture of our application and remember how to distinguish authentication from authorization.
+
+As you can see from the diagram above, when Spring Security is enabled, a request from a client will be intercepted and processed by a set of filters before it gets to the controller for processing. There are different filters, but some use 
+AuthenticationManager
+ for authentication, and if it's successful, the filter saves the user data in the 
+SecurityContext
+. This data will be available until the request is processed.
+As you know, authentication is the act of making sure that users are who they claim to be. In contrast, authorization is the process of giving the user permission to access a specific resource or function. Spring Security can handle both authentication and authorization.
+Filter chain
+Spring Security filter chain processes incoming requests and enforces security controls, such as authentication and authorization. The filter chain consists of a series of filters executed in a specific order, from top to bottom. The order of the filters in the chain is determined by the configuration that we, as developers, can create adding new filters or use the default ones.
+The order of configuring filters in Spring Security is important for determining the processing of requests and user access rights. Filters should be arranged from softest to strictest to prevent processing errors.
+Let's look at a few default filters:
+UsernamePasswordAuthenticationFilter
+ is a filter that performs user authentication based on the username and password passed as parameters in the request and then calls the 
+AuthenticationManager
+ to authenticate the user.
+BasicAuthenticationFilter
+ is a filter that looks for the standard authorization header ("
+Authorization
+") and then calls the 
+AuthenticationManager
+ to authenticate the user.
+SecurityContextPersistenceFilter
+ populates 
+SecurityContext
+ based on 
+HttpSession
+, or creates a new one if it doesn't exist.
+DefaultLoginPageGeneratingFilter
+ is a filter that generates a standard Spring login page.
+DefaultLogoutPageGeneratingFilter
+ is a filter that generates a standard Spring logout page.
+LogoutFilter
+ is a filter that logs out the user, invalidating the session and deleting the authentication information.
+AuthenticationManager
+As you can see, some filters such as 
+UsernamePasswordAuthenticationFilter
+ or 
+BasicAuthenticationFilter
+ extract information from the request and pass it on to the 
+AuthenticationManager
+ to authenticate the user. 
+AuthenticationManager
+ is an interface that defines how filters perform user authentication. The default implementation of 
+AuthenticationManager
+ is 
+ProviderManager
+. The logic of the 
+ProviderManager
+ is quite simple: it contains a list of 
+AuthenticationProvider
+ and calls them one by one trying to get the first successful user authentication. Thanks to 
+ProviderManager
+, our application can support several authentication methods, each of which will be responsible for its own 
+AuthenticationProvider
+.
+
+AuthenticationProvider
+AuthenticationProvider
+ is responsible for authenticating user credentials, similar to 
+AuthenticationManager
+. However, while 
+AuthenticationManager
+ simply declares the way of interaction, 
+AuthenticationProvider
+ is there to handle the actual authentication process by verifying the user credentials and determining whether they will be granted access to the application.
+Let's take a look at a few built-in implementations of 
+AuthenticationProvider
+:
+DaoAuthenticationProvider
+ uses 
+UserDetailsService
+ to retrieve user details and authenticate the user credentials against those details.
+JaasAuthenticationProvider
+ uses the Java Authentication and Authorization Service (JAAS) to authenticate users.
+OpenIDAuthenticationProvider
+ supports authentication via OpenID.
+OAuth2AuthenticationProvider
+ supports authentication via OAuth 2.0.
+As you can see, each provider implements its own user authentication method.
+UserDetailsService
+As we saw above, 
+DaoAuthenticationProvider
+ uses the 
+UserDetailsService
+ to get user details, such as username, password, and roles (in other words, permissions). 
+UserDetailsService
+ retrieves user details from a data source such as a database, an LDAP server, or third-party web services (OAuth 2.0).
+Let's take a look at a few built-in implementations of 
+UserDetailsService
+:
+InMemoryUserDetailsManager
+ — as the name suggests, this implementation stores all information in memory.
+JdbcDaoImpl
+/
+JdbcUserDetailsManager
+ store user information in a database and use JDBC to interact with it. 
+JdbcUserDetailsManager
+ provides a ready-made CRUD API for interacting with the database.
+Principal and security context
+Once the user has been authenticated and we have received information about them, we want to save it for the duration of the request, so that it is available at any time we need it. To do this, Spring Security uses the 
+SecurityContextHolder
+ object, which by default saves the context with all user information in 
+ThreadLocal
+, which allows us to access this information at any time during the execution of the request. 
+SecurityContext
+ is an object that contains information about an authenticated user (
+Authentication
+). 
+Principal
+ in Spring Security represents the currently authenticated entity (user, system, or service) that is granted access to resources or functionality within the application. It is also worth saying that each user has permissions that are represented in Spring Security by the 
+GrantedAuthority
+ class. 
+Authority
+ represents the permissions that may be required to perform certain actions in the system.
+A principal is an authenticated entity (user, system, or service) that is granted access to resources or functionality within the application.
+Let's take a look at an example:
+
+As a result of applying the 
+UsernamePasswordAuthenticationFilter
+, if the correct username + password combination is entered, the information about an authenticated user will be stored in the 
+SecurityContextHolder
+.
+Conclusion
+This topic introduced you to the primary components of Spring Security, including default components and their interactions. Spring Security is a comprehensive and adaptable framework that can both be used as-is or customized for specific user authentication and authorization needs.
+
+
+
 <hr><img width="775" alt="image" src="https://github.com/user-attachments/assets/f6d6f2fa-13e0-48a2-917a-6cd55be47214">
 <hr><img width="860" alt="image" src="https://github.com/user-attachments/assets/b52d2521-09b5-45b4-acda-1b701fc55ac5">
 <hr><img width="1043" alt="image" src="https://github.com/user-attachments/assets/d670e5e3-ec2a-4026-9b8d-2f731d485e32">
